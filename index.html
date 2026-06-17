@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MSStrategies - AI Solutions & Forward Deployed Engineer</title>
+<meta name="description" content="MSStrategies - AI Solutions and Forward Deployed Engineer. I turn vague problems into reliable, shipped software: autonomous agent systems, MCP servers, and full-stack delivery. Swiss national, open to CH and EU.">
+<meta name="author" content="MSStrategies">
+<meta name="theme-color" content="#0a0f1a">
+<meta name="color-scheme" content="dark">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="MSStrategies - AI Solutions & Forward Deployed Engineer">
+<meta property="og:description" content="I turn vague problems into reliable, shipped software: autonomous agent systems, MCP servers, and full-stack delivery.">
+<meta property="og:site_name" content="MSStrategies">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    /* Premium dark palette */
+    --bg:#0a0f1a;
+    --bg-2:#0d1422;
+    --surface:#121a2b;
+    --surface-2:#16203450;
+    --line:#1e2c44;
+    --line-soft:#172338;
+    --text:#eef3fb;
+    --muted:#9fb2cf;
+    --muted-2:#8298bd;
+    --accent:#34e0c4;
+    --accent-2:#5b8cff;
+    --accent-soft:#34e0c41a;
+    --glow:#34e0c433;
+    --warn:#ffb454;
+    --radius:16px;
+    --maxw:1040px;
+    --ease:cubic-bezier(.16,.84,.44,1);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;-moz-text-size-adjust:100%;-ms-text-size-adjust:100%;text-size-adjust:100%}
+
+  body{
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+    /* layered ambient gradients (CSS only, no images) */
+    background-image:
+      radial-gradient(900px 520px at 78% -8%, #1a2e5233 0%, transparent 60%),
+      radial-gradient(720px 480px at 8% 6%, #14403a30 0%, transparent 58%),
+      radial-gradient(1000px 700px at 50% 120%, #1a234a25 0%, transparent 60%);
+    background-attachment:fixed;
+  }
+
+  ::selection{background:var(--accent);color:#04231d}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+
+  a{color:var(--accent);text-decoration:none;transition:color .2s var(--ease)}
+  a:hover{color:#7ff0dd}
+
+  h1,h2,h3{font-family:'Sora',sans-serif;letter-spacing:-.02em}
+
+  /* ---------- Skip link (a11y) ---------- */
+  .skip{position:absolute;left:-999px;top:0;background:var(--accent);color:#04231d;
+    padding:10px 16px;border-radius:0 0 10px 0;font-weight:600;z-index:200}
+  .skip:focus{left:0}
+
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+
+  /* ---------- Nav ---------- */
+  nav{position:sticky;top:0;z-index:100;
+    -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+    background:rgba(10,15,26,.72);border-bottom:1px solid transparent;
+    transition:border-color .3s var(--ease),background .3s var(--ease)}
+  nav.scrolled{border-bottom-color:var(--line-soft);background:rgba(10,15,26,.86)}
+  .nav-in{max-width:var(--maxw);margin:0 auto;padding:14px 28px;display:flex;align-items:center;justify-content:space-between}
+  .brand{font-family:'Sora';font-weight:700;font-size:16px;letter-spacing:-.01em;color:var(--text)}
+  .brand .dot{color:var(--accent)}
+  .nav-links{display:flex;gap:28px;align-items:center}
+  .nav-links a{color:var(--muted);font-size:14px;font-weight:500}
+  .nav-links a:hover{color:var(--text)}
+  .nav-cta{border:1px solid var(--line);padding:8px 16px;border-radius:10px;color:var(--text)!important;font-size:14px;transition:border-color .25s var(--ease),background .25s var(--ease)}
+  .nav-cta:hover{border-color:var(--accent);background:var(--accent-soft)}
+  @media(max-width:640px){.nav-links a:not(.nav-cta){display:none}}
+
+  /* ---------- Hero ---------- */
+  header{position:relative;padding:118px 0 86px;overflow:hidden}
+  .hero-grid{position:absolute;inset:0;z-index:0;pointer-events:none;
+    background-image:
+      linear-gradient(var(--line-soft) 1px,transparent 1px),
+      linear-gradient(90deg,var(--line-soft) 1px,transparent 1px);
+    background-size:48px 48px;
+    -webkit-mask-image:radial-gradient(620px 420px at 70% 22%,#000 0%,transparent 78%);
+    mask-image:radial-gradient(620px 420px at 70% 22%,#000 0%,transparent 78%);
+    opacity:.5}
+  .hero-content{position:relative;z-index:1}
+
+  .status{display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:500;
+    color:var(--muted);border:1px solid var(--line);background:var(--surface-2);
+    border-radius:30px;padding:7px 15px;margin-bottom:30px}
+  .status .pulse{width:8px;height:8px;border-radius:50%;background:var(--accent);
+    box-shadow:0 0 0 0 var(--glow);animation:pulse 2.4s infinite}
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 var(--glow)}
+    70%{box-shadow:0 0 0 9px transparent}
+    100%{box-shadow:0 0 0 0 transparent}}
+
+  h1{font-size:clamp(36px,6.4vw,68px);font-weight:800;line-height:1.04;max-width:18ch}
+  h1 .grad{
+    background:linear-gradient(108deg,var(--accent) 0%,var(--accent-2) 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  .role-line{margin-top:22px;font-family:'JetBrains Mono',monospace;font-size:clamp(13px,1.7vw,16px);
+    color:var(--accent);letter-spacing:.02em}
+  .sub{font-size:clamp(16px,2vw,20px);color:var(--muted);margin-top:22px;max-width:62ch}
+
+  .cta{margin-top:38px;display:flex;gap:14px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:13px 24px;border-radius:12px;
+    font-weight:600;font-size:15px;transition:transform .2s var(--ease),box-shadow .25s var(--ease),border-color .25s var(--ease),background .25s var(--ease)}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-primary{background:linear-gradient(108deg,var(--accent),var(--accent-2));color:#041b18;
+    box-shadow:0 10px 30px -10px var(--glow)}
+  .btn-primary:hover{box-shadow:0 16px 40px -12px var(--glow);color:#041b18}
+  .btn-ghost{border:1px solid var(--line);color:var(--text)}
+  .btn-ghost:hover{border-color:var(--accent);background:var(--accent-soft);color:var(--text)}
+  .btn svg{width:17px;height:17px}
+
+  .hero-meta{margin-top:40px;display:flex;gap:30px;flex-wrap:wrap;font-size:13.5px;color:var(--muted-2)}
+  .hero-meta span{display:inline-flex;align-items:center;gap:8px}
+  .hero-meta svg{width:15px;height:15px;color:var(--accent);opacity:.85}
+
+  /* ---------- Section frame ---------- */
+  section{padding:88px 0;position:relative}
+  .section-line{border-top:1px solid var(--line-soft)}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--accent);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+  .eyebrow-center{justify-content:center}
+  .eyebrow::before{content:"";width:24px;height:1px;background:var(--accent);opacity:.6}
+  h2{font-size:clamp(26px,3.6vw,38px);font-weight:700;line-height:1.12;max-width:20ch}
+  .lead{color:var(--muted);font-size:17px;margin-top:16px;max-width:64ch}
+
+  /* ---------- What I build ---------- */
+  .build-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:44px}
+  .build-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px;transition:transform .3s var(--ease),border-color .3s var(--ease),background .3s var(--ease);position:relative;overflow:hidden}
+  .build-card::after{content:"";position:absolute;inset:0;border-radius:var(--radius);
+    background:radial-gradient(280px 160px at 80% 0%,var(--accent-soft),transparent 70%);opacity:0;transition:opacity .3s var(--ease)}
+  .build-card:hover{transform:translateY(-4px);border-color:#2a3e60}
+  .build-card:hover::after{opacity:1}
+  .build-ic{width:42px;height:42px;border-radius:11px;display:grid;place-items:center;
+    background:var(--accent-soft);border:1px solid var(--line);margin-bottom:16px;position:relative;z-index:1}
+  .build-ic svg{width:21px;height:21px;color:var(--accent)}
+  .build-card h3{font-size:17px;font-weight:600;margin-bottom:8px;position:relative;z-index:1}
+  .build-card p{color:var(--muted);font-size:14.5px;position:relative;z-index:1}
+
+  /* ---------- Featured projects ---------- */
+  .proj{background:var(--surface);border:1px solid var(--line);border-radius:20px;
+    padding:34px;margin-top:22px;position:relative;overflow:hidden;
+    transition:transform .3s var(--ease),border-color .3s var(--ease)}
+  .proj::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;
+    background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:0;transition:opacity .4s var(--ease)}
+  .proj:hover{transform:translateY(-3px);border-color:#2a3e60}
+  .proj:hover::before{opacity:.7}
+  .proj-head{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;flex-wrap:wrap}
+  .proj-num{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--muted-2);margin-bottom:10px}
+  .proj h3{font-size:clamp(20px,2.6vw,26px);font-weight:700;line-height:1.15}
+  .proj .role{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--muted);margin-top:8px}
+  .proj .desc{color:#d3deef;font-size:16px;margin-top:18px;max-width:68ch}
+  .proj .desc b{color:var(--text);font-weight:600}
+
+  .pill{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;
+    letter-spacing:.04em;text-transform:uppercase;border-radius:30px;padding:6px 13px;white-space:nowrap}
+  .pill-live{color:var(--accent);background:var(--accent-soft);border:1px solid #1f5a4f}
+  .pill-live .pulse{width:7px;height:7px;border-radius:50%;background:var(--accent);
+    box-shadow:0 0 0 0 var(--glow);animation:pulse 2.4s infinite}
+  .pill-use{color:var(--accent-2);background:#5b8cff14;border:1px solid #2a3f6e}
+
+  .proj-points{margin:22px 0 6px;display:grid;gap:11px}
+  .proj-points li{list-style:none;display:flex;gap:12px;color:var(--muted);font-size:14.5px;line-height:1.5}
+  .proj-points svg{width:17px;height:17px;color:var(--accent);flex:0 0 auto;margin-top:3px}
+  .proj-points b{color:var(--text);font-weight:600}
+
+  .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+  .tag{font-family:'JetBrains Mono',monospace;font-size:12px;background:var(--bg-2);
+    color:var(--muted);padding:6px 11px;border-radius:8px;border:1px solid var(--line-soft)}
+
+  .proj-links{display:flex;gap:18px;flex-wrap:wrap;margin-top:26px;padding-top:22px;border-top:1px solid var(--line-soft)}
+  .proj-link{display:inline-flex;align-items:center;gap:8px;font-size:14.5px;font-weight:600;color:var(--text)}
+  .proj-link:hover{color:var(--accent)}
+  .proj-link svg{width:17px;height:17px;transition:transform .2s var(--ease)}
+  .proj-link:hover svg{transform:translateX(2px)}
+
+  /* ---------- Other half ---------- */
+  .half-wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;margin-top:44px}
+  @media(max-width:820px){.half-wrap{grid-template-columns:1fr;gap:30px}}
+  .half-card{background:linear-gradient(180deg,var(--surface),var(--bg-2));
+    border:1px solid var(--line);border-radius:var(--radius);padding:30px}
+  .half-card h3{font-size:18px;font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:11px}
+  .half-card h3 svg{width:20px;height:20px;color:var(--accent)}
+  .half-card .when{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--muted-2);margin-bottom:14px}
+  .half-card p{color:var(--muted);font-size:15px}
+  .half-card .takeaway{margin-top:16px;padding-top:16px;border-top:1px solid var(--line-soft);
+    font-size:14px;color:var(--text)}
+  .half-card .takeaway b{color:var(--accent)}
+
+  /* ---------- Skills ---------- */
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;margin-top:44px}
+  .skillcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:24px;
+    transition:border-color .3s var(--ease)}
+  .skillcard:hover{border-color:#2a3e60}
+  .skillcard h4{font-size:14px;font-family:'JetBrains Mono',monospace;color:var(--accent);
+    text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px}
+  .skillcard ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+  .skillcard li{font-size:13px;color:var(--muted);background:var(--bg-2);border:1px solid var(--line-soft);
+    padding:5px 11px;border-radius:8px}
+
+  /* ---------- Honest box ---------- */
+  .honest{margin-top:36px;background:var(--surface-2);border:1px solid var(--line);
+    border-left:3px solid var(--accent);border-radius:0 14px 14px 0;padding:22px 26px}
+  .honest h4{font-size:14px;font-family:'JetBrains Mono',monospace;color:var(--accent);
+    text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px}
+  .honest-row{display:flex;flex-wrap:wrap;gap:14px 36px}
+  .honest-row div{font-size:14.5px;color:var(--muted)}
+  .honest-row b{color:var(--text);font-weight:600;display:block;font-size:13px;margin-bottom:1px}
+
+  /* ---------- Contact ---------- */
+  .contact{text-align:center}
+  .contact h2{margin:0 auto;max-width:none}
+  .contact .lead{margin:16px auto 0}
+  .contact-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+  .contact-links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+  .clink{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line);
+    border-radius:12px;padding:12px 18px;font-size:14.5px;color:var(--muted);
+    transition:border-color .25s var(--ease),color .25s var(--ease),background .25s var(--ease)}
+  .clink:hover{border-color:var(--accent);color:var(--text);background:var(--accent-soft)}
+  .clink svg{width:18px;height:18px;color:var(--accent)}
+
+  /* ---------- Footer ---------- */
+  footer{padding:44px 0 60px;border-top:1px solid var(--line-soft);text-align:center}
+  footer p{color:var(--muted-2);font-size:13.5px}
+  footer .meta{margin-top:6px;font-size:12.5px}
+
+  /* ---------- Scroll reveal ---------- */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+    .reveal{opacity:1;transform:none}
+    .btn:hover,.proj:hover,.build-card:hover{transform:none}
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<nav id="nav" aria-label="Primary">
+  <div class="nav-in">
+    <a class="brand" href="#top">MSStrategies<span class="dot">.</span></a>
+    <div class="nav-links">
+      <a href="#build">What I build</a>
+      <a href="#work">Projects</a>
+      <a href="#human">The other half</a>
+      <a class="nav-cta" href="#contact">Get in touch</a>
+    </div>
+  </div>
+</nav>
+
+<header id="top">
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="hero-content">
+      <span class="status"><span class="pulse" aria-hidden="true"></span> Available for Forward Deployed / AI Solutions roles</span>
+      <h1>I turn vague problems into <span class="grad">software that ships</span> and stays reliable.</h1>
+      <p class="role-line">// AI Solutions &amp; Forward Deployed Engineer</p>
+      <p class="sub">Self-taught, solo, and fast. I design and deploy autonomous agent systems, MCP servers, and full-stack apps. The LLM does the judgment, deterministic code does everything else, and the result is reliable enough to put in front of a customer.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#work">
+          See the work
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="mailto:contactmsstrategies@gmail.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          Get in touch
+        </a>
+      </div>
+      <div class="hero-meta">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-5.2-7-11a7 7 0 0 1 14 0c0 5.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg> Remote</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg> Swiss national · open to CH &amp; EU</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg> Ships end to end, solo</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- WHAT I BUILD -->
+<section id="build" class="section-line">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow">What I build</p>
+      <h2>Reliable AI systems, not demos.</h2>
+      <p class="lead">A demo works once. A system works on the customer's worst day. I build for the second kind: scoped tightly, instrumented everywhere, and boring in production by design.</p>
+    </div>
+    <div class="build-grid">
+      <div class="build-card reveal">
+        <div class="build-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M17.5 14v7M14 17.5h7"/></svg></div>
+        <h3>Agent systems &amp; MCP servers</h3>
+        <p>Multi-agent orchestration with the LLM kept on a tight leash. Tool-boundary design, state gates, and the same discipline an MCP server needs to be safe in someone else's stack.</p>
+      </div>
+      <div class="build-card reveal">
+        <div class="build-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M12 3v18M5 8l7-5 7 5M5 16l7 5 7-5"/></svg></div>
+        <h3>Full-stack delivery</h3>
+        <p>Next.js, React, TypeScript and Python front to back. Supabase / Postgres, edge functions, Vercel deploys. From first commit to a live URL without a handoff.</p>
+      </div>
+      <div class="build-card reveal">
+        <div class="build-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M4 7h16M4 12h10M4 17h7"/><circle cx="19" cy="15.5" r="3.2"/><path d="m21.4 17.9 1.6 1.6"/></svg></div>
+        <h3>Deterministic automation</h3>
+        <p>Pipelines where 95% is fixed and gated, and the model only touches the 5% that needs judgment. Idempotent runs, structured output, observable every step.</p>
+      </div>
+      <div class="build-card reveal">
+        <div class="build-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/><circle cx="12" cy="12" r="3.5"/></svg></div>
+        <h3>Reliability engineering</h3>
+        <p>Error classification and automated recovery instead of one-shot prompting. Secret scans, guardrail hooks, and audit logs that run on every tool call.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED PROJECTS -->
+<section id="work" class="section-line">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow">Featured projects</p>
+      <h2>Two systems that show how I think.</h2>
+      <p class="lead">Both built solo, end to end: architecture, code, deploy. The links go to the actual repositories.</p>
+    </div>
+
+    <!-- Project 1 -->
+    <article class="proj reveal">
+      <div class="proj-head">
+        <div>
+          <p class="proj-num">01 / Deterministic AI-Ops</p>
+          <h3>Sarah AI - a deterministic lead-ops pipeline</h3>
+          <p class="role">Sole architect &amp; engineer · Python · 2026</p>
+        </div>
+        <span class="pill pill-live"><span class="pulse" aria-hidden="true"></span> Live on GitHub</span>
+      </div>
+      <p class="desc">One command turns a niche plus a city into a qualified, researched, ready-to-send outreach list. <b>The LLM is used only where judgment is needed</b>; every other step is gated, logged, and reproducible. Built to prove a thesis: most repeatable "Virtual Assistant" work is a fixed pattern that a deterministic pipeline runs faster and more reliably than a human.</p>
+      <ul class="proj-points">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg><span><b>Tool-boundary design</b> - each capability is a discrete, testable function (scrape, analyze, generate, research), the exact discipline an MCP server needs.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg><span><b>Production hygiene</b> - secrets via env vars (never hardcoded), a demo mode that runs offline on mock data, idempotent runs, structured CSV plus markdown output.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg><span><b>Determinism over magic</b> - the thing customers actually want is reliability, not creativity. Ship the wedge: one command, one outcome, no scope creep.</span></li>
+      </ul>
+      <div class="tags">
+        <span class="tag">Python</span><span class="tag">Claude API</span><span class="tag">Apify</span>
+        <span class="tag">Custom HTML parser</span><span class="tag">MCP-shaped tools</span><span class="tag">CSV / Markdown</span>
+      </div>
+      <div class="proj-links">
+        <a class="proj-link" href="https://github.com/msstrategies/sarah-ai" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 .1.8 1.2.8 1.2v-1.4ZM15 23.4c-.6.1-.8-.2-.8-.6v-2.9c0-1 .3-1.6.6-1.9-2.6-.3-5.4-1.3-5.4-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11 11 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6"/></svg>
+          View repository
+        </a>
+        <a class="proj-link" href="https://github.com/msstrategies/sarah-ai" target="_blank" rel="noopener">
+          Read the architecture
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </article>
+
+    <!-- Project 2 -->
+    <article class="proj reveal">
+      <div class="proj-head">
+        <div>
+          <p class="proj-num">02 / Agentic infrastructure</p>
+          <h3>Agentic Command Center - a multi-agent workspace</h3>
+          <p class="role">Sole architect &amp; engineer · agents + scripts + hooks · 2026</p>
+        </div>
+        <span class="pill pill-use">In daily use</span>
+      </div>
+      <p class="desc">A personal operating system for getting real work done with AI agents: <b>modular skills, role-based subagents, self-healing error recovery, and guardrail hooks on every tool call</b>. Built to answer one question - how far does a single operator scale by orchestrating agents instead of doing every step by hand?</p>
+      <ul class="proj-points">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg><span><b>Systems thinking</b> - decomposition, separation of concerns, observability, failure handling. This is solution-architecture work, not prompting.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg><span><b>Reliability by design</b> - errors stack (90% per step is 59% over five). So on any failure: classify, route to a fix (install / permission / credential / retry), re-run before escalating.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg><span><b>Compounding velocity</b> - reusable skills mean each task starts from accumulated capability, not zero. That is the FDE edge: ship fast because the tooling compounds.</span></li>
+      </ul>
+      <div class="tags">
+        <span class="tag">Multi-agent</span><span class="tag">MCP servers</span><span class="tag">Python</span>
+        <span class="tag">Shell hooks</span><span class="tag">Self-healing</span><span class="tag">File-based memory</span><span class="tag">Git</span>
+      </div>
+      <div class="proj-links">
+        <a class="proj-link" href="https://github.com/msstrategies/agentic-command-center" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 .1.8 1.2.8 1.2v-1.4ZM15 23.4c-.6.1-.8-.2-.8-.6v-2.9c0-1 .3-1.6.6-1.9-2.6-.3-5.4-1.3-5.4-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11 11 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6"/></svg>
+          View repository
+        </a>
+        <a class="proj-link" href="https://github.com/msstrategies/agentic-command-center" target="_blank" rel="noopener">
+          Read the architecture
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- THE OTHER HALF -->
+<section id="human" class="section-line">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow">The other half of the job</p>
+      <h2>An FDE sits with the customer. I have spent two years doing exactly that.</h2>
+      <p class="lead">Forward deployment is half engineering, half people. The code is the easy half. The other half is staying calm when something breaks in front of a stakeholder, and hearing the real need underneath what was asked for. I learned that part before I wrote a line of production code.</p>
+    </div>
+    <div class="half-wrap">
+      <div class="half-card reveal">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M12 3 4 6v6c0 4.5 3.4 7.8 8 9 4.6-1.2 8-4.5 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg>
+          Calm under pressure
+        </h3>
+        <p class="when">Security Officer · Protectas SA · 2024 to 2026</p>
+        <p>High-stakes, customer-facing operations across rotating sites. De-escalation in conflict situations, reliable incident documentation, onboarding new colleagues, and respectful conduct with everyone in the room.</p>
+        <p class="takeaway"><b>What carries over:</b> composure when the demo breaks and a room is watching, plus the judgment to keep a tense situation moving forward.</p>
+      </div>
+      <div class="half-card reveal">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/><path d="M17 8.5a3 3 0 0 1 0 5M19 6a6 6 0 0 1 0 10"/></svg>
+          Customer empathy
+        </h3>
+        <p class="when">Retail Specialist (EFZ) · 2020 to 2023</p>
+        <p>Consultative selling, needs analysis, and solution-oriented advice in direct customer contact. Measurably improved customer satisfaction by leading with fit-first recommendations rather than the easy upsell.</p>
+        <p class="takeaway"><b>What carries over:</b> discovery and scoping. Translating a customer's stated want into the real need before a single line gets built.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="section-line">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow">Toolbox</p>
+      <h2>What I work with.</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skillcard reveal">
+        <h4>AI / LLM engineering</h4>
+        <ul>
+          <li>Agent design</li><li>Multi-agent orchestration</li><li>MCP server development</li>
+          <li>RAG</li><li>Prompt engineering</li><li>Eval harnesses</li><li>Cost / latency optimization</li>
+        </ul>
+      </div>
+      <div class="skillcard reveal">
+        <h4>Full-stack</h4>
+        <ul>
+          <li>Next.js</li><li>React</li><li>TypeScript</li><li>Python</li>
+          <li>Supabase / Postgres</li><li>Edge functions</li><li>Vercel</li><li>REST APIs</li>
+        </ul>
+      </div>
+      <div class="skillcard reveal">
+        <h4>Automation &amp; tooling</h4>
+        <ul>
+          <li>n8n</li><li>Playwright</li><li>Browser automation</li>
+          <li>Deterministic pipelines</li><li>Git</li><li>Shell hooks</li>
+        </ul>
+      </div>
+      <div class="skillcard reveal">
+        <h4>Solutions / customer</h4>
+        <ul>
+          <li>Discovery</li><li>Scoping</li><li>Technical communication</li>
+          <li>Non-technical buyers</li><li>Copywriting</li><li>Sales psychology</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="honest reveal">
+      <h4>Straight facts</h4>
+      <div class="honest-row">
+        <div><b>Location</b> Remote</div>
+        <div><b>Eligibility</b> Swiss national · open to CH &amp; EU relocation</div>
+        <div><b>Languages</b> German (native) · Aramaic (native) · English (B1, improving fast)</div>
+        <div><b>Working style</b> Solo, end to end, ships fast</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section-line contact">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow eyebrow-center">Get in touch</p>
+      <h2>Let us build something that ships.</h2>
+      <p class="lead">If you are hiring a Forward Deployed or AI Solutions Engineer who can scope with the customer and then go build it, I would like to talk.</p>
+      <div class="contact-actions">
+        <a class="btn btn-primary" href="mailto:contactmsstrategies@gmail.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          contactmsstrategies@gmail.com
+        </a>
+      </div>
+      <div class="contact-links">
+        <a class="clink" href="https://www.github.com/msstrategies" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0ZM.5 8.5h4V24h-4V8.5Zm7 0h3.8v2.1h.06c.53-1 1.83-2.1 3.77-2.1 4.03 0 4.77 2.65 4.77 6.1V24h-4v-6.8c0-1.62-.03-3.7-2.26-3.7-2.26 0-2.6 1.76-2.6 3.58V24h-4V8.5Z"/></svg>
+          github.com/msstrategies
+        </a>
+        <a class="clink" href="https://github.com/msstrategies" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 .1.8 1.2.8 1.2v-1.4ZM15 23.4c-.6.1-.8-.2-.8-.6v-2.9c0-1 .3-1.6.6-1.9-2.6-.3-5.4-1.3-5.4-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11 11 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6"/></svg>
+          github.com/msstrategies
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>MSStrategies · AI Solutions &amp; Forward Deployed Engineer</p>
+    <p class="meta">Remote · Swiss national · open to CH &amp; EU · Built solo, deployed on Vercel.</p>
+  </div>
+</footer>
+
+<script>
+  // Nav shadow on scroll
+  var nav = document.getElementById('nav');
+  var onScroll = function(){ nav.classList.toggle('scrolled', window.scrollY > 8); };
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  // Scroll reveal (IntersectionObserver, progressive enhancement)
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>
